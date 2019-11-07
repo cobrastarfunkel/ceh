@@ -20,7 +20,6 @@ import json
 class Encode:
   encoded_string = ""
   base64_dict = {}
-
   
 
   def __init__(self, string_to_encode):

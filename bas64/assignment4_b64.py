@@ -15,15 +15,10 @@ from encode import Encode
 from decode import Decode
 import json
 
-"""
-To make sure it works correctly
-"""
-test_var = "Test with a long string"
-base64_test = base64.b64encode(test_var)
-print("Original Text --> " + base64.b64decode(base64_test))
-print("Encoded with Python Lib --> " + base64_test)
 
 
+en = Encode("")
+de = Decode("")
 """
 The dictionary below is here in case the json file is not present
 in the directory.  This will ensure the table is present for the
@@ -44,15 +39,65 @@ with open('b64_table.json', 'w') as f:
   json.dump(base64_dict, f)
 
 
-def main():
-   
-  en = Encode(test_var)
-  en.encode(test_var)
-  print('Encoded String-->: '+ en.encoded_string)
 
-  de = Decode(test_var)
-  de.decode(en.encoded_string)
-  print('Decoded String-->: '+ de.decoded_string)
+def menu_loop():
+
+  print("1. Encode a String")
+  print("2. Decode a String")
+  print("0. Exit")
+  user_selection = raw_input("What would you like to do?")
+  return user_selection
+
+
+
+def encode_string():
+  user_string = raw_input("Enter a String to Encode: ")
+  en.encode(user_string)
+  print("\nOriginal String -> " + user_string)
+  print("Encoded String -> " + en.encoded_string)
+  print("Lib Encode -> "+ base64.b64encode(user_string) + "\n")
+  return True
+
+
+
+def decode_string(s = ""):
+  de.decode(s)
+  print("\nDecoded -> " + de.decoded_string + "\n")
+
+
+
+def main():
+  string_encrypted = False
+
+  while True:
+    user_selection = menu_loop()
+
+    if(user_selection == "1"):
+      string_encrypted = encode_string()
+
+    if(user_selection == "2") and string_encrypted:
+      user_input = raw_input("Would you like to Decrypt your original String(y/n)? ")
+      if(user_input.lower() == "y"):
+        decode_string(en.encoded_string)
+      else:
+        user_input = raw_input("Enter a String to Decrypt: ")
+        decode_string(user_input)
+
+    elif(user_selection == "2"):
+        user_input = raw_input("Enter a String to Decrypt: ")
+        decode_string(user_input)
+
+
+    if(user_selection == "0"):
+      break
+  
+#  en = Encode(test_var)
+#  en.encode(test_var)
+#  print('Encoded String--> '+ en.encoded_string)
+#
+#  de = Decode(test_var)
+#  de.decode(en.encoded_string)
+#  print('Decoded String--> '+ de.decoded_string)
 
 
 
