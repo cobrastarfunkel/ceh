@@ -66,7 +66,7 @@ def encode_string():
 
 def decode_string(s = ""):
   de.decode(s)
-  print("\nDecoded -> " + de.decoded_string + "\n")
+  print("\n\n\n\n\n##### Decoded -> " + de.decoded_string + "\n")
 
 
 
