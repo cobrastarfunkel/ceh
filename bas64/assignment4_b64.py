@@ -43,7 +43,7 @@ with open('b64_table.json', 'w') as f:
 
 def menu_loop():
 
-  print("1. Encode a String")
+  print("\n1. Encode a String")
   print("2. Decode a String")
   print("## Below Options will Hash then Encode String ##")
   print("3. Hash a String with SHA1")
@@ -59,7 +59,7 @@ def encode_string():
   en.encode(user_string)
   print("\nOriginal String -> " + user_string)
   print("Encoded String -> " + en.encoded_string)
-  print("Lib Encode -> "+ base64.b64encode(user_string) + "\n")
+  print("Lib Encode -> "+ base64.b64encode(user_string))
   return True
 
 
@@ -76,9 +76,9 @@ def select_encoded_string(to_hash = False, hash_type = "MD5"):
   en.print_encoded_strings()
 
   if to_hash:
-    user_input = raw_input("Which String would you like to Hash? ")
+    user_input = raw_input("Which String would you like to Hash(Use Index Number)? ")
   else:
-    user_input = raw_input("Which String would you like to Decode? ")
+    user_input = raw_input("Which String would you like to Decode(Use Index Number)? ")
   
   if int(user_input) >= 0 and int(user_input) < len(en.encoded_strings):
     if to_hash:
@@ -109,7 +109,6 @@ def hash_strings(hash_type, s = ""):
     
 
 def main():
-  string_encrypted = False
 
   while True:
     user_selection = menu_loop()
@@ -119,7 +118,7 @@ def main():
       string_encrypted = encode_string()
 
 
-    if(user_selection == "2") and string_encrypted:
+    if(user_selection == "2") and len(en.encoded_strings) > 0:
       user_input = raw_input("\nWould you like to Decode a String from your List(y/n)? ")
       if(user_input.lower() == "y"):
         select_encoded_string()
@@ -134,32 +133,39 @@ def main():
 
 
     elif(user_selection == "3"):
-      user_input = raw_input("\nHash a String from your encoded List(y/n)? ")
+      if len(en.encoded_strings) > 0:
+        user_input = raw_input("\nHash a String from your encoded List(y/n)? ")
 
-      if(user_input.lower() == "y"):
-        select_encoded_string(True, "SHA1")
+        if(user_input.lower() == "y"):
+          select_encoded_string(True, "SHA1")
+        else:
+          user_input = raw_input("Enter your Password: ")
+          hash_strings("SHA1", user_input)
+
       else:
         user_input = raw_input("Enter your Password: ")
         hash_strings("SHA1", user_input)
-      string_encrypted = True
 
 
     elif(user_selection == "4"):
-      user_input = raw_input("\nHash a String from your encoded List(y/n)? ")
+      if len(en.encoded_strings) > 0:
+        user_input = raw_input("\nHash a String from your encoded List(y/n)? ")
 
-      if(user_input.lower() == "y"):
-        select_encoded_string(True, "MD5")
+        if(user_input.lower() == "y"):
+          select_encoded_string(True, "MD5")
+        else:
+          user_input = raw_input("Enter your Password: ")
+          hash_strings("MD5", user_input)
 
       else:
         user_input = raw_input("Enter your Password: ")
         hash_strings("MD5", user_input)
-      string_encrypted = True
 
 
     if(user_selection == "0"):
       break
 
-    print("\n#### Encoded Strings ####")
+    print("\n\n\n\n\n#### Encoded Strings ####")
     en.print_encoded_strings()
     print("\n#### Hashed Strings ####")
     en.print_hashed_strings()

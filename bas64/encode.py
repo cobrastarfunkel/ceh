@@ -147,11 +147,13 @@ class Encode:
   def print_encoded_strings(self):
     count = 0
     for item in self.encoded_strings:
-      print(str(count) + ":" + item)
+      print("Index " + str(count) + ": " + item)
       count+=1
 
 
 
   def print_hashed_strings(self):
+    count = 0
     for item in self.hash_strings:
-      print(item)
+      print("Index " + str(count) + ": " + item)
+      count+=1
