@@ -1,6 +1,5 @@
 #!/usr/bin/python
 import base64
-import string
 from encode import Encode
 from decode import Decode
 import json
