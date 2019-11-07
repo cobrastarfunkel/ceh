@@ -1,3 +1,19 @@
+"""
+@author: Ian Cobia
+
+Encode a string into Base64 by converting the
+characters to their ascii numbers, then
+convert those numbers into 8 bit binary padding 0's
+to the left as needed, combine that into one string,
+split it into 6 bits, convert that to decimal, and
+finaly compare that to a dict of the Base64 table.
+
+
+file_name: encode.py
+
+Nov 07 2019
+
+"""
 import json
 
 

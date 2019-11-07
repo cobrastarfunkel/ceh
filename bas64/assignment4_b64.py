@@ -1,4 +1,15 @@
 #!/usr/bin/python
+"""
+@author: Ian Cobia
+
+Add Comments when completed
+
+
+file_name: assignment4_b64.py
+
+Nov 07 2019
+
+"""
 import base64
 from encode import Encode
 from decode import Decode

@@ -1,3 +1,21 @@
+"""
+@author: Ian Cobia
+
+Decode a string from Base64 back to it's orignal state.
+First it takes the Base64 chars and converts them to their
+respective numbers using the Base64 dict stored in
+the .json file that is created by the main python file or stored in
+this directory if it's already been run. Then it turns those into
+binary numbers, pads the left so they're all six bits, combines that
+into a long binary string, splits the string into 8 bits,
+converts the 8 bits into decimal numbers, and finally converts those
+to ascii chars corresponding to the decimal numbers.
+
+file_name: decode.py
+
+Nov 07 2019
+
+"""
 import json
 
 
@@ -13,6 +31,10 @@ class Decode:
 
 
   def decode(self, string_to_decode):
+    """
+    Open the base_64 json file and assign it
+    to a dict then start the decoding process.
+    """
     with open("b64_table.json", "r") as f:
       self.base64_dict = json.load(f)
 
@@ -21,6 +43,10 @@ class Decode:
 
 
   def b64_to_decimal(self, chars):
+    """
+    Change the base64 chars to their corresponding
+    decimal numbers using the bas64 dict
+    """
     string_b64 = []
 
     for char in chars:
@@ -32,6 +58,10 @@ class Decode:
 
 
   def decimal_to_binary(self, dec_nums = []):
+    """
+    Convert the decimal numbers to binary and remove the 0b
+    assigned by python.
+    """
     binary_nums = ""
     binary_list = []
     temp_num = 0
@@ -45,6 +75,11 @@ class Decode:
 
 
   def binary_to_eight_bits(self, bin_dec_list = []):
+    """
+    Pad the left with 0's if the number is not a 6  bit number,
+    then combine all the 6 bit binary numbers into one string,
+    finally split the string into 8 bit binary numbers.
+    """
     six_bit_list = []
     temp_string = ""
     eight_bit_list = []
@@ -64,6 +99,9 @@ class Decode:
 
 
   def eight_bits_to_decimal(self, binary_list = []):
+    """
+    Convert the eight bit binary umbers to decimal
+    """
     dec_nums = []
 
     for num in binary_list:
@@ -71,12 +109,18 @@ class Decode:
 
     self.decimal_to_ascii(dec_nums)
 
+
+
   def decimal_to_ascii(self, dec_list = []):
+    """
+    Convert the decimal numbers to ascii
+    """
     ascii_string = ""
 
     for num in dec_list:
       ascii_string+=chr(num)
 
+    # The decoded String
     self.decoded_string = ascii_string
 
 
