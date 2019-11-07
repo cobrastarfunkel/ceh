@@ -6,14 +6,13 @@ from decode import Decode
 import json
 
 """
-The easy way
+To make sure it works correctly
 """
 test_var = "Test with a long string"
 base64_test = base64.b64encode(test_var)
 print("Original Text --> " + base64.b64decode(base64_test))
 print("Encoded with Python Lib --> " + base64_test)
 
-# The 'fun' way
 
 """
 The dictionary below is here in case the json file is not present
