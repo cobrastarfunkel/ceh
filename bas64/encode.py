@@ -18,8 +18,10 @@ import json
 
 
 class Encode:
+  encoded_strings = []
   encoded_string = ""
   base64_dict = {}
+  hash_strings = []
   
 
   def __init__(self, string_to_encode):
@@ -138,4 +140,18 @@ class Encode:
 
     # Encoded String
     self.encoded_string = return_string
+    self.encoded_strings.append(return_string)
 
+
+
+  def print_encoded_strings(self):
+    count = 0
+    for item in self.encoded_strings:
+      print(str(count) + ":" + item)
+      count+=1
+
+
+
+  def print_hashed_strings(self):
+    for item in self.hash_strings:
+      print(item)
