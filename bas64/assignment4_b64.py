@@ -60,7 +60,6 @@ def encode_string():
   print("\nOriginal String -> " + user_string)
   print("Encoded String -> " + en.encoded_string)
   print("Lib Encode -> "+ base64.b64encode(user_string))
-  return True
 
 
 
@@ -115,7 +114,7 @@ def main():
 
 
     if(user_selection == "1"):
-      string_encrypted = encode_string()
+      encode_string()
 
 
     if(user_selection == "2") and len(en.encoded_strings) > 0:
