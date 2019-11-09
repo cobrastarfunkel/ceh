@@ -2,10 +2,15 @@
 """
 @author: Ian Cobia
 
-Add Comments when completed
-
+The main program that drives the encode.py and decode.py
+classes.  Creates the json file those two classes use to covert
+to and from base64.  This file also handles the hashing
+of the Base64 encoded Strings.
 
 file_name: assignment4_b64.py
+
+Must have the encode.py and decode.py classes for this to function.
+The json file holding the base64 dict will be generated.
 
 Nov 07 2019
 
