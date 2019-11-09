@@ -60,21 +60,35 @@ def menu_loop():
 
 
 def encode_string():
+  """
+  Encodes a String using the encode function from encode.py
+  """
   user_string = raw_input("\nEnter a String to Encode: ")
   en.encode(user_string)
   print("\nOriginal String -> " + user_string)
   print("Encoded String -> " + en.encoded_string)
-  print("Lib Encode -> "+ base64.b64encode(user_string))
+
+  # Used the Base64 lib as a Reference to ensure it is working
+  print("Base64 Lib Encode -> "+ base64.b64encode(user_string))
 
 
 
 def decode_string(s = ""):
+  """
+  Calls the decode funtion from decode.py to decode a String
+  """
   de.decode(s)
   print("\n\n\n\n\n##### Decoded -> " + de.decoded_string + "\n")
 
 
 
 def select_encoded_string(to_hash = False, hash_type = "MD5"):
+  """
+  If the user chose a Has option in the menu this will promtp them
+  to select a Strign from their list of encoded Strign to Hash and then
+  Hash their String using MD5 or SHA1.  If they chose to Decode it 
+  will do the same thing but call the decode_string function above
+  """
   user_input = ""
 
   en.print_encoded_strings()
@@ -84,6 +98,7 @@ def select_encoded_string(to_hash = False, hash_type = "MD5"):
   else:
     user_input = raw_input("Which String would you like to Decode(Use Index Number)? ")
   
+  # Avoid index out of bounds error
   if int(user_input) >= 0 and int(user_input) < len(en.encoded_strings):
     if to_hash:
       hash_strings(hash_type, en.encoded_strings[int(user_input)])
@@ -95,6 +110,10 @@ def select_encoded_string(to_hash = False, hash_type = "MD5"):
 
 
 def hash_strings(hash_type, s = ""):
+  """
+  Hash the users String using their chosen Hashing algorithm
+  and then encode the hashed value with Base64
+  """
   temp_string = ""
   hsha1 = hashlib.sha1()
   hmd5 = hashlib.md5()
@@ -113,7 +132,11 @@ def hash_strings(hash_type, s = ""):
     
 
 def main():
-
+  """
+  Driving function, handles user selection, and the input loop.
+  Prints the Encoded Strings and Hashed Values stored in the 
+  Base64_Factory Object
+  """
   while True:
     user_selection = menu_loop()
 
