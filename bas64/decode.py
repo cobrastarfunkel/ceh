@@ -25,11 +25,6 @@ class Decode:
 
 
 
-  def __init__(self, string_to_decode):
-    self.string_to_decode = string_to_decode
-
-
-
   def decode(self, string_to_decode):
     """
     Open the base_64 json file and assign it

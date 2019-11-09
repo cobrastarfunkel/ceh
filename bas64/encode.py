@@ -24,10 +24,6 @@ class Encode:
   hash_strings = []
   
 
-  def __init__(self, string_to_encode):
-    self.string_to_encode = string_to_encode
-
-
 
   def encode(self, string_to_encode):
     """

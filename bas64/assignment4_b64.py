@@ -23,8 +23,8 @@ import hashlib
 
 
 
-en = Encode("")
-de = Decode("")
+en = Encode()
+de = Decode()
 """
 The dictionary below is here in case the json file is not present
 in the directory.  This will ensure the table is present for the
@@ -50,7 +50,6 @@ def menu_loop():
 
   print("\n1. Encode a String")
   print("2. Decode a String")
-  print("## Below Options will Hash then Encode String ##")
   print("3. Hash a String with SHA1")
   print("4. Hash a String with MD5")
   print("0. Exit")
@@ -78,7 +77,7 @@ def decode_string(s = ""):
   Calls the decode funtion from decode.py to decode a String
   """
   de.decode(s)
-  print("\n\n\n\n\n##### Decoded -> " + de.decoded_string + "\n")
+  print("\n\n\n##### Decoded -> " + de.decoded_string + "\n")
 
 
 
@@ -135,7 +134,7 @@ def main():
   """
   Driving function, handles user selection, and the input loop.
   Prints the Encoded Strings and Hashed Values stored in the 
-  Base64_Factory Object
+  Encode Object at the end of each time through the loop
   """
   while True:
     user_selection = menu_loop()
@@ -192,7 +191,7 @@ def main():
     if(user_selection == "0"):
       break
 
-    print("\n\n\n\n\n#### Encoded Strings ####")
+    print("\n\n#### Encoded Strings ####")
     en.print_encoded_strings()
     print("\n#### Hashed Strings ####")
     en.print_hashed_strings()
